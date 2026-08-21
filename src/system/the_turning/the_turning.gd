@@ -5,10 +5,11 @@ extends RefCounted
 var _board: Board
 var _width: int
 var _height: int
-var _turn_number: int
+var _turn_number: int = 0
 
 func turn() -> Turn:
-	var t = Turn.new(_board)
+	_turn_number += 1
+	var t = Turn.new(_board, _turn_number)
 	t.resolve()
 	return t
 
