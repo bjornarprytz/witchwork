@@ -10,3 +10,6 @@ func _init(x:int,y:int,m:Materia=null):
 
 func is_empty() -> bool:
 	return materia == null
+
+func _to_string() -> String:
+	return "%s:%s" % [coords, materia]

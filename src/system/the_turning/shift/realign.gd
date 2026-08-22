@@ -3,12 +3,12 @@ extends Shift
 
 var to_element: Materia.Element
 
-func _init(b: Board, t: Materia, e: Materia.Element) -> void:
+func _init(b: Board, t: Cell, e: Materia.Element) -> void:
 	super._init(b,t)
 	to_element = e
 
 func resolve_shift() -> Shift.Result:
-	var before = target.element
-	target.element = to_element
+	var before = target.materia.element
+	target.materia.element = to_element
 	
-	return _result(before, target.element)
+	return _result(before, target.materia.element)

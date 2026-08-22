@@ -1,17 +1,16 @@
 class_name Creation
 extends Shift
 
-var coords: Vector2i
+var to_create: Materia
 
-func _init(b: Board, t: Materia, c: Vector2i) -> void:
+func _init(b: Board, t: Cell, m: Materia) -> void:
 	super._init(b,t)
-	coords = c
+	to_create = m
 
 func resolve_shift() -> Shift.Result:
-	var target_cell = board.get_cell(coords)
-	assert(target_cell.is_empty())
+	assert(target.is_empty())
 	
-	target_cell.materia = target
+	target.materia = to_create
 	
-	return _result(null, target_cell)
+	return _result(null, to_create)
 	

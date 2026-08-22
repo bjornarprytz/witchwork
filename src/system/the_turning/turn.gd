@@ -23,9 +23,7 @@ func resolve() -> Array[Shift.Result]:
 	
 	for c in cells:
 		if c.materia.phase == Materia.Phase.Awake:
-			var r = try_rise(c, reserved_cells)
-			if (!r.is_empty()):
-				reserved_cells.append_array(r)
+			if (try_reserve_neighbours(c, reserved_cells)):
 				shifts.append(PhaseChange.new(_board, c.materia, Materia.Phase.Risen))
 	
 	_flush(shifts)
@@ -46,32 +44,51 @@ func resolve() -> Array[Shift.Result]:
 	is_resolved = true
 	return shift_results
 
-## Returns reserved cells if cell can rise
-func try_rise(cell: Cell, reserved_cells: Array[Cell]) -> Array[Cell]:
+## Returns reserved cells
+func try_reserve_neighbours(cell: Cell, reserved_cells: Array[Cell]) -> bool:
 	## TODO: Should be optimizable
 	if (reserved_cells.has(cell)):
-		return [] # 
+		return false
 	var neighbours = _board.get_neighbours(cell)
 	
 	for n in neighbours:
 		if (reserved_cells.has(n)):
-			return []
+			return false
 	
 	neighbours.append(cell)
+	
+	reserved_cells.append_array(neighbours)
 	
 	return neighbours
 
 func unfold(cell: Cell) -> Array[Shift]:
 	## TODO: Unfold, depending on the essence and element
+	
+	print("Unfold: [%s]" % cell)
+	
 	return []
 
 func settle(cell: Cell) -> Array[Shift]:
 	## TODO: Settle, depending on the essence
-	return []
+	
+	print("Settle: [%s]" % cell)
+	
+	var shift = [
+		null,
+		null,
+		null,
+		Transmutation.new(_board, cell, Materia.random_essence()),
+		Destruction.new(_board, cell)
+	].pick_random()
+	
+	if (shift == null):
+		return []
+	
+	return [shift]
 
 func drift(cell: Cell) -> Array[Shift]:
 	## TODO: Drift, depending on the element
-	return []
+	return [PhaseChange.new(_board, cell, Materia.next_phase(cell.materia.phase))]
 
 ## Resolve shifts, then clear them. Results are added to the turn results
 func _flush(shifts: Array[Shift]):

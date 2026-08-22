@@ -8,11 +8,11 @@ class Result:
 	var after: Variant
 
 var board: Board
-var target: Materia
+var target: Cell
 
 var _is_resolved := false
 
-func _init(b: Board, t: Materia) -> void:
+func _init(b: Board, t: Cell) -> void:
 	board = b
 	target = t
 
