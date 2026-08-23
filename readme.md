@@ -4,12 +4,7 @@ game on itch.io: [link](https://thewarlock.itch.io/witchwork)
 
 ## TODO
 
-- Enable `.github/workflows/build-and-publish.yml`: fill in the `env` values at the top and remove the `if: false` stop flag on the `export-game` job
 - Push release with `./scripts/push_release.sh`
-- Go [here](https://thewarlock.itch.io/witchwork/edit) and edit game:
-  - Check "This file will be played in the browser"
-  - Set viewport dimensions (normal: 1280x720)
-  - Check SharedArrayBuffer
 
 ### Extra
 

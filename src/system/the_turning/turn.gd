@@ -15,31 +15,21 @@ func _init(board: Board, turn_number: int) -> void:
 
 func resolve() -> Array[Shift.Result]:
 	assert (!is_resolved)
-	var reserved_cells: Array[Cell] = []
-	var shifts: Array[Shift] = []
+	var unfold_shifts: Array[Shift] = []
+	var settle_shifts: Array[Shift] = []
+	var drift_shifts: Array[Shift] = []
 	var cells = _board.cells
-	
-	# Awake Try to rise
-	
-	for c in cells:
-		if c.materia.phase == Materia.Phase.Awake:
-			if (try_reserve_neighbours(c, reserved_cells)):
-				shifts.append(PhaseChange.new(_board, c.materia, Materia.Phase.Risen))
-	
-	_flush(shifts)
 	
 	# Risen materia unfold, then settle
 	for c in cells:
 		if c.materia.phase == Materia.Phase.Risen:
-			shifts.append_array(unfold(c))
+			unfold_shifts.append_array(_unfold(c))
+			settle_shifts.append_array(_settle(c))
+		drift_shifts.append_array(_drift(c))
 	
-	_flush(shifts)
-	
-	# Each materia drift
-	for c in cells:
-		shifts.append_array(drift(c))
-	
-	_flush(shifts)
+	_flush(unfold_shifts)
+	_flush(settle_shifts)
+	_flush(drift_shifts)
 	
 	is_resolved = true
 	return shift_results
@@ -61,34 +51,20 @@ func try_reserve_neighbours(cell: Cell, reserved_cells: Array[Cell]) -> bool:
 	
 	return neighbours
 
-func unfold(cell: Cell) -> Array[Shift]:
-	## TODO: Unfold, depending on the essence and element
-	
-	print("Unfold: [%s]" % cell)
-	
-	return []
+func _unfold(cell: Cell) -> Array[Shift]:
+	var unfold = Unfold.new(Unfold.Context.new(cell, _board))
+	return unfold.resolve()
 
-func settle(cell: Cell) -> Array[Shift]:
-	## TODO: Settle, depending on the essence
-	
-	print("Settle: [%s]" % cell)
-	
-	var shift = [
-		null,
-		null,
-		null,
-		Transmutation.new(_board, cell, Materia.random_essence()),
-		Destruction.new(_board, cell)
-	].pick_random()
-	
-	if (shift == null):
-		return []
-	
-	return [shift]
 
-func drift(cell: Cell) -> Array[Shift]:
-	## TODO: Drift, depending on the element
-	return [PhaseChange.new(_board, cell, Materia.next_phase(cell.materia.phase))]
+func _settle(cell: Cell) -> Array[Shift]:
+
+	var settle = Settle.new(Settle.Context.new(cell, _board))
+	return settle.resolve()
+	
+	
+func _drift(cell: Cell) -> Array[Shift]:
+	var drift = Drift.new(Drift.Context.new(cell, _board))
+	return drift.resolve()
 
 ## Resolve shifts, then clear them. Results are added to the turn results
 func _flush(shifts: Array[Shift]):
