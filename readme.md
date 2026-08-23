@@ -4,12 +4,6 @@ game on itch.io: [link](https://thewarlock.itch.io/witchwork)
 
 ## TODO
 
-- Setup itch.io page for witchwork [link](https://itch.io/game/new)
-  - Set Project URL to witchwork (can be changed later)
-  - Set Kind to HTML
-  - Hit the Save button
-- Get Butler API key from [itch.io](https://itch.io/user/settings/api-keys)
-- Add key to GitHub repository secrets as BUTLER_API_KEY [link](https://github.com/bjornarprytz/witchwork/settings/secrets/actions)
 - Enable `.github/workflows/build-and-publish.yml`: fill in the `env` values at the top and remove the `if: false` stop flag on the `export-game` job
 - Push release with `./scripts/push_release.sh`
 - Go [here](https://thewarlock.itch.io/witchwork/edit) and edit game:
