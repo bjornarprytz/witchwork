@@ -15,6 +15,8 @@ func turn() -> Turn:
 
 func _init(size:int):
 	board = Board.new(size,size)
+	_width = size
+	_height = size
 	_seed_materia()
 
 func _seed_materia():

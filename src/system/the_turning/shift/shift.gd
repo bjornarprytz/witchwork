@@ -31,3 +31,6 @@ func _result(before:Variant, after:Variant) -> Result:
 	r.before = before
 	r.after = after
 	return r
+
+func _noop() -> Result:
+	return _result(null, null)

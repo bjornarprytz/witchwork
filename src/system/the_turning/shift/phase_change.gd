@@ -8,7 +8,10 @@ func _init(b: Board, t: Cell, p: Materia.Phase) -> void:
 	to_phase = p
 
 func resolve_shift() -> Shift.Result:
-	var before = target.phase
+	if (target.materia == null):
+		push_warning("Materia no longer exists during phase change")
+		return _noop()
+	var before = target.materia.phase
 	target.materia.phase = to_phase
 
 	return _result(before, target.materia.phase)

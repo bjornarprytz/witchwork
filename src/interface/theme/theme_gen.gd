@@ -14,14 +14,15 @@ var button_pressed_color = button_color.darkened(0.15)
 var button_border_color = palette.accent
 var default_border_width = 4 
 var default_corner_radius = 5
-var default_content_margins = content_margins(45, 35)
+var default_content_margins = content_margins(10, 10)
 
 var panel_texture = preload("res://assets/img/panel-texture.png")
 
 var default_font = preload("res://assets/fonts/Tiny5-Regular.ttf")
 var default_font_size = 32
+var mini_font_size = 8
 
-var title_font = preload("res://assets/fonts/Jersey15-Regular.ttf")
+var title_font = preload("res://assets/fonts/rune-witch-font/RuneWitch-PVa3B.otf")
 var title_font_size = 64
 
 func define_theme():
@@ -66,4 +67,8 @@ func define_theme():
 	define_variant_style("Title", "RichTextLabel", {
 		normal_font = title_font,
 		normal_font_size = title_font_size
+	})
+	
+	define_variant_style("Subtext", "RichTextLabel", {
+		normal_font_size = mini_font_size
 	})

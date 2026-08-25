@@ -6,6 +6,10 @@ game on itch.io: [link](https://thewarlock.itch.io/witchwork)
 
 - Push release with `./scripts/push_release.sh`
 
+- [x] Game system
+- [ ] Game events (event bus)
+- [ ] Game view
+
 ### Extra
 
 - itch.io

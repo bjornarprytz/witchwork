@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dpwlebq2kvfki"]
+
+[ext_resource type="Theme" uid="uid://cwi2l6qtt6la6" path="res://interface/theme/global_theme.tres" id="1_2v366"]
+[ext_resource type="Texture2D" uid="uid://bewof7daqvmbt" path="res://assets/img/spirit.png" id="1_jpmep"]
+[ext_resource type="Script" uid="uid://dq3oya428aa60" path="res://interface/cell_ui.gd" id="2_0shox"]
+
+[node name="Cell" type="PanelContainer" unique_id=1724005932]
+texture_filter = 3
+custom_minimum_size = Vector2(60, 60)
+custom_maximum_size = Vector2(60, 60)
+offset_left = -4.0
+offset_right = 61.0
+offset_bottom = 57.0
+theme = ExtResource("1_2v366")
+script = ExtResource("2_0shox")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1837156942]
+layout_mode = 2
+
+[node name="ElementSymbol" type="TextureRect" parent="VBoxContainer" unique_id=264584997]
+unique_name_in_owner = true
+texture_filter = 3
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_jpmep")
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1598977896]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PhaseLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1858502530]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"Subtext"
+text = "..."
+fit_content = true
+autowrap_mode = 0
+
+[node name="Spacer" type="Control" parent="VBoxContainer/HBoxContainer" unique_id=2022033399]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AgeLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer" unique_id=1148051108]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_type_variation = &"Subtext"
+text = "1"
+fit_content = true
+autowrap_mode = 0

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bl2in0vs4gljg"]
+
+[ext_resource type="Script" uid="uid://bcxgmqa0ko2uw" path="res://interface/the_turning_ui.gd" id="1_04kan"]
+
+[node name="TheTurning" type="VBoxContainer" unique_id=276444585]
+script = ExtResource("1_04kan")
+
+[node name="TitleContainer" type="CenterContainer" parent="." unique_id=693746479]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="TitleContainer" unique_id=732383435]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "The Turning"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Controls" type="HBoxContainer" parent="." unique_id=556578917]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Controls" unique_id=830809516]
+layout_mode = 2
+text = "Next"
+
+[node name="Board" type="GridContainer" parent="." unique_id=1747552054]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 5
+
+[connection signal="pressed" from="Controls/Button" to="." method="_on_button_pressed"]

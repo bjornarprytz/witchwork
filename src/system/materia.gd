@@ -25,10 +25,28 @@ enum Phase {
 	Risen
 }
 
-var essence: Essence
-var element: Element
-var phase: Phase
-var age: int
+signal essence_changed(new_essence: Essence)
+signal element_changed(new_element: Element)
+signal phase_changed(new_phase: Phase)
+signal age_changed(new_age: int)
+
+var essence: Essence:
+	set(value):
+		essence = value
+		essence_changed.emit(value)
+var element: Element:
+	set(value):
+		element = value
+		element_changed.emit(value)
+var phase: Phase:
+	set(value):
+		phase = value
+		phase_changed.emit(value)
+
+var age: int:
+	set(value):
+		age = value
+		age_changed.emit(value)
 
 static func random_essence() -> Essence:
 	return Essence.values().pick_random()
@@ -58,5 +76,51 @@ static func random() -> Materia:
 	
 	return m
 
+static func get_elemental_symbol(element: Element) -> Resource:
+	match element:
+		Materia.Element.Earth:
+			return preload("res://assets/img/earth.png")
+		Materia.Element.Air:
+			return preload("res://assets/img/air.png")
+		Materia.Element.Aether:
+			return preload("res://assets/img/spirit.png")
+		Materia.Element.Fire:
+			return preload("res://assets/img/fire.png")
+		Materia.Element.Water:
+			return preload("res://assets/img/water.png")
+	
+	push_error("Invalid element: %s" % element)
+	return null
+
+static func get_essence_color(essence: Essence) -> Color:
+	match essence:
+		Materia.Essence.Rooted:
+			return Color(0.2, 0.5, 0.2)
+		Materia.Essence.Crystalline:
+			return Color(0.5, 0.5, 1.0)
+		Materia.Essence.Flowing:
+			return Color(0.2, 0.5, 1.0)
+		Materia.Essence.Vital:
+			return Color(1.0, 0.5, 0.2)
+		Materia.Essence.Burnt:
+			return Color(0.5, 0.2, 0.2)
+		Materia.Essence.Threshold:
+			return Color(0.5, 0.5, 0.5)
+		Materia.Essence.Celestial:
+			return Color(1.0, 1.0, 1.0)
+	return Color.HOT_PINK
+
+static func get_phase_indicator(phase: Phase) -> String:
+	match phase:
+		Materia.Phase.Dormant:
+			return "."
+		Materia.Phase.Awake:
+			return ".."
+		Materia.Phase.Risen:
+			return "..."
+	return "x"
+
 func _to_string() -> String:
-	return "%s/%s" % [essence, element]
+	var essence_str = Essence.keys()[essence]
+	var element_str = Element.keys()[element]
+	return "%s/%s" % [essence_str, element_str]

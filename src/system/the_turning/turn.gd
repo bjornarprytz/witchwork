@@ -18,6 +18,7 @@ func _init(turn_number: int, turning: TheTurning) -> void:
 	_turning = turning
 
 func resolve() -> Array[Shift.Result]:
+	print("Starting turn #%d" % number)
 	assert (!is_resolved)
 	var unfold_shifts: Array[Shift] = []
 	var settle_shifts: Array[Shift] = []
@@ -26,6 +27,8 @@ func resolve() -> Array[Shift.Result]:
 	
 	# Risen materia unfold, then settle
 	for c in cells:
+		if c.materia == null:
+			continue
 		if c.materia.phase == Materia.Phase.Risen:
 			unfold_shifts.append_array(_unfold(c))
 			settle_shifts.append_array(_settle(c))

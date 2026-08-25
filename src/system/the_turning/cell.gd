@@ -1,7 +1,13 @@
 class_name Cell
-extends Object
+extends RefCounted
 
-var materia: Materia
+signal materia_changed(new_materia: Materia)
+
+var materia: Materia:
+	set(value):
+		materia = value
+		materia_changed.emit(value)
+
 var coords: Vector2i
 
 func _init(x:int,y:int,m:Materia=null):
