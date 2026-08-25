@@ -1,7 +1,11 @@
 class_name Turn
 extends Object
 
-var _board: Board
+var _turning: TheTurning
+
+var _board: Board: 
+	get:
+		return _turning.board
 
 var number: int
 
@@ -9,9 +13,9 @@ var shift_results: Array[Shift.Result] = []
 
 var is_resolved := false
 
-func _init(board: Board, turn_number: int) -> void:
-	_board = board
+func _init(turn_number: int, turning: TheTurning) -> void:
 	number = turn_number
+	_turning = turning
 
 func resolve() -> Array[Shift.Result]:
 	assert (!is_resolved)
@@ -52,19 +56,16 @@ func try_reserve_neighbours(cell: Cell, reserved_cells: Array[Cell]) -> bool:
 	return neighbours
 
 func _unfold(cell: Cell) -> Array[Shift]:
-	var unfold = Unfold.new(Unfold.Context.new(cell, _board))
-	return unfold.resolve()
-
+	var unfold = Unfold.new(cell)
+	return unfold.resolve(_turning)
 
 func _settle(cell: Cell) -> Array[Shift]:
+	var settle = Settle.new(cell)
+	return settle.resolve(_turning)
 
-	var settle = Settle.new(Settle.Context.new(cell, _board))
-	return settle.resolve()
-	
-	
 func _drift(cell: Cell) -> Array[Shift]:
-	var drift = Drift.new(Drift.Context.new(cell, _board))
-	return drift.resolve()
+	var drift = Drift.new(cell)
+	return drift.resolve(_turning)
 
 ## Resolve shifts, then clear them. Results are added to the turn results
 func _flush(shifts: Array[Shift]):
