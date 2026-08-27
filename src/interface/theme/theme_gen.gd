@@ -20,7 +20,7 @@ var panel_texture = preload("res://assets/img/panel-texture.png")
 
 var default_font = preload("res://assets/fonts/Tiny5-Regular.ttf")
 var default_font_size = 32
-var mini_font_size = 8
+var mini_font_size = 16
 
 var title_font = preload("res://assets/fonts/rune-witch-font/RuneWitch-PVa3B.otf")
 var title_font_size = 64

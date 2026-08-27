@@ -20,9 +20,8 @@ func _init(turn_number: int, turning: TheTurning) -> void:
 func resolve() -> Array[Shift.Result]:
 	print("Starting turn #%d" % number)
 	assert (!is_resolved)
-	var unfold_shifts: Array[Shift] = []
-	var settle_shifts: Array[Shift] = []
-	var drift_shifts: Array[Shift] = []
+	var unfolds: Array[Effect] = []
+	var drifts: Array[Effect] = []
 	var cells = _board.cells
 	
 	# Risen materia unfold, then settle
@@ -30,15 +29,14 @@ func resolve() -> Array[Shift.Result]:
 		if c.materia == null:
 			continue
 		if c.materia.phase == Materia.Phase.Risen:
-			unfold_shifts.append_array(_unfold(c))
-			settle_shifts.append_array(_settle(c))
-		drift_shifts.append_array(_drift(c))
-	
-	_flush(unfold_shifts)
-	_flush(settle_shifts)
-	_flush(drift_shifts)
+			unfolds.append(_unfold(c))
+		drifts.append(_drift(c))
+		
+	_flush(unfolds)
+	_flush(drifts)
 	
 	is_resolved = true
+	Events.turn_ended.emit(self)
 	return shift_results
 
 ## Returns reserved cells
@@ -58,20 +56,14 @@ func try_reserve_neighbours(cell: Cell, reserved_cells: Array[Cell]) -> bool:
 	
 	return neighbours
 
-func _unfold(cell: Cell) -> Array[Shift]:
-	var unfold = Unfold.new(cell)
-	return unfold.resolve(_turning)
+func _unfold(cell: Cell) -> Effect:
+	return Unfold.new(cell)
 
-func _settle(cell: Cell) -> Array[Shift]:
-	var settle = Settle.new(cell)
-	return settle.resolve(_turning)
+func _drift(cell: Cell) -> Effect:
+	return Drift.new(cell)
 
-func _drift(cell: Cell) -> Array[Shift]:
-	var drift = Drift.new(cell)
-	return drift.resolve(_turning)
-
-## Resolve shifts, then clear them. Results are added to the turn results
-func _flush(shifts: Array[Shift]):
-	for s in shifts:
-		shift_results.append(s.resolve())
-	shifts.clear()
+## Resolve effects, then clear them. Results are added to the turn results
+func _flush(effects: Array[Effect]):
+	for s in effects:
+		shift_results.append_array(s.resolve(_turning).shifts)
+	effects.clear()

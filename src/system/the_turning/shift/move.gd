@@ -4,11 +4,11 @@ extends Shift
 
 var destination: Cell
 
-func _init(b: Board, t: Cell, dest: Cell) -> void:
-	super._init(b,t)
+func _init(t: Cell, dest: Cell) -> void:
+	super._init(t)
 	destination = dest
 
-func resolve_shift() -> Shift.Result:
+func resolve_shift(_context: TheTurning) -> Shift.Result:
 	assert(!target.is_empty())
 	assert(destination.is_empty())
 	

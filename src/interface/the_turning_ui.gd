@@ -19,6 +19,5 @@ func load_turning(turning: TheTurning):
 		cell_ui.cell = c
 		board.add_child(cell_ui)
 
-
-func _on_button_pressed() -> void:
+func next_turn():
 	_turning.turn()

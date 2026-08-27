@@ -6,7 +6,7 @@ var cell: Cell
 func _init(cell_: Cell):
 	cell = cell_
 
-func resolve(context: TheTurning) -> Array[Shift]:
+func resolve_effect(context: TheTurning) -> Array[Shift.Result]:
 	## TODO: Settle, depending on the essence
 	print("Settle: [%s]" % cell)
 	
@@ -14,11 +14,13 @@ func resolve(context: TheTurning) -> Array[Shift]:
 		null,
 		null,
 		null,
-		Transmutation.new(context.board, cell, Materia.random_essence()),
-		Destruction.new(context.board, cell)
+		Transmutation.new(cell, Materia.random_essence()),
+		Destruction.new(cell)
 	].pick_random()
 	
 	if (shift == null):
 		return []
 	
-	return [shift]
+	var r = shift.resolve(context)
+	
+	return [r]

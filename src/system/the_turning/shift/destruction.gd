@@ -1,10 +1,10 @@
 class_name Destruction
 extends Shift
 
-func _init(b: Board, t: Cell) -> void:
-	super._init(b,t)
+func _init(t: Cell) -> void:
+	super._init(t)
 
-func resolve_shift() -> Shift.Result:
+func resolve_shift(_context: TheTurning) -> Shift.Result:
 	assert(!target.is_empty())
 	
 	var destroyed_materia = target.materia

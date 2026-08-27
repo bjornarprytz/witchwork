@@ -3,11 +3,11 @@ extends Shift
 
 var to_phase: Materia.Phase
 
-func _init(b: Board, t: Cell, p: Materia.Phase) -> void:
-	super._init(b,t)
+func _init(t: Cell, p: Materia.Phase) -> void:
+	super._init(t)
 	to_phase = p
 
-func resolve_shift() -> Shift.Result:
+func resolve_shift(context: TheTurning) -> Shift.Result:
 	if (target.materia == null):
 		push_warning("Materia no longer exists during phase change")
 		return _noop()

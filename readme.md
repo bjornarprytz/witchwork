@@ -7,8 +7,12 @@ game on itch.io: [link](https://thewarlock.itch.io/witchwork)
 - Push release with `./scripts/push_release.sh`
 
 - [x] Game system
-- [ ] Game events (event bus)
-- [ ] Game view
+  - [ ] Game rules
+    - [ ] Phase order
+    - [ ] Order of execution (turn, effects, shifts)
+  - [ ] Draft
+- [x] Game events (event bus)
+- [x] Game view
 
 ### Extra
 
