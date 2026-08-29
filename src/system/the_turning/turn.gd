@@ -20,8 +20,8 @@ func _init(turn_number: int, turning: TheTurning) -> void:
 func resolve() -> Array[Shift.Result]:
 	print("Starting turn #%d" % number)
 	assert (!is_resolved)
-	var unfolds: Array[Effect] = []
-	var drifts: Array[Effect] = []
+	var unfolds: Array[Rule] = []
+	var drifts: Array[Rule] = []
 	var cells = _board.cells
 	
 	# Risen materia unfold, then settle
@@ -56,14 +56,14 @@ func try_reserve_neighbours(cell: Cell, reserved_cells: Array[Cell]) -> bool:
 	
 	return neighbours
 
-func _unfold(cell: Cell) -> Effect:
+func _unfold(cell: Cell) -> Rule:
 	return Unfold.new(cell)
 
-func _drift(cell: Cell) -> Effect:
+func _drift(cell: Cell) -> Rule:
 	return Drift.new(cell)
 
 ## Resolve effects, then clear them. Results are added to the turn results
-func _flush(effects: Array[Effect]):
+func _flush(effects: Array[Rule]):
 	for s in effects:
 		shift_results.append_array(s.resolve(_turning).shifts)
 	effects.clear()

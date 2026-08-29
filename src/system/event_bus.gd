@@ -1,6 +1,6 @@
 extends Node
 
 
-signal effect_resolved(result: Effect.Result)
+signal rule_resolved(result: Rule.Result)
 signal shift_resolved(result: Shift.Result)
 signal turn_ended(turn: Turn)

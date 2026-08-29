@@ -1,12 +1,12 @@
 class_name Drift
-extends Effect
+extends Rule
 
 var cell: Cell
 
 func _init(cell_: Cell):
 	cell = cell_
 
-func resolve_effect(context: TheTurning) -> Array[Shift.Result]:
+func resolve_rule(context: TheTurning) -> Array[Shift.Result]:
 	## TODO: Drift, depending on the element
 	print("Drift: [%s]" % cell)
 	
