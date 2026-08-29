@@ -10,10 +10,6 @@ var cell: Cell
 func _ready() -> void:
 	_update_ui()
 	cell.materia_changed.connect(on_materia_changed)
-	cell.materia.age_changed.connect(on_materia_changed)
-	cell.materia.phase_changed.connect(on_materia_changed)
-	cell.materia.essence_changed.connect(on_materia_changed)
-	cell.materia.element_changed.connect(on_materia_changed)
 
 func on_materia_changed(_m):
 	_update_ui()

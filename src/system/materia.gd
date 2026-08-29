@@ -25,28 +25,20 @@ enum Phase {
 	Risen
 }
 
-signal essence_changed(new_essence: Essence)
-signal element_changed(new_element: Element)
-signal phase_changed(new_phase: Phase)
-signal age_changed(new_age: int)
+var essence: Essence
+var element: Element
+var phase: Phase
+var age: int
 
-var essence: Essence:
-	set(value):
-		essence = value
-		essence_changed.emit(value)
-var element: Element:
-	set(value):
-		element = value
-		element_changed.emit(value)
-var phase: Phase:
-	set(value):
-		phase = value
-		phase_changed.emit(value)
-
-var age: int:
-	set(value):
-		age = value
-		age_changed.emit(value)
+func copy() -> Materia:
+	var c = Materia.new()
+	
+	c.age = self.age
+	c.element = self.element
+	c.essence = self.essence
+	c.phase = self.phase
+	
+	return c
 
 static func random_essence() -> Essence:
 	return Essence.values().pick_random()
@@ -65,7 +57,6 @@ static func next_phase(current: Phase) -> Phase:
 		_:
 			push_error("Unrecognized phase: %s" % current)
 			return Phase.Dormant
-	
 
 static func random() -> Materia:
 	var m = Materia.new()

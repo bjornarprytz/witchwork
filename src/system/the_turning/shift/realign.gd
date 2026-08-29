@@ -9,6 +9,6 @@ func _init(t: Cell, e: Materia.Element) -> void:
 
 func resolve_shift(_context: TheTurning) -> Shift.Result:
 	var before = target.materia.element
-	target.materia.element = to_element
+	target.materia_next.element = to_element
 	
-	return _result(before, target.materia.element)
+	return _result(before, target.materia_next.element)
