@@ -17,9 +17,9 @@ func on_materia_changed(_m):
 func _update_ui():
 	if (cell.materia == null):
 		element_symbol.texture = preload("res://assets/img/icon.svg")
-		element_symbol.modulate = Color.WHITE
-		phase_label.clear()
-		age_label.clear()
+		element_symbol.modulate = Color.GRAY
+		phase_label.text = "-"
+		age_label.text = "x"
 		tooltip_text = "empty"
 		return
 	
