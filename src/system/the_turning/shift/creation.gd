@@ -10,7 +10,7 @@ func _init(t: Cell, m: Materia) -> void:
 func resolve_shift(_context: TheTurning) -> Shift.Result:
 	assert(target.is_empty())
 	
-	target.materia = to_create
+	target.materia_next = to_create
 	
 	return _result(null, to_create)
 	

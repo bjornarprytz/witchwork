@@ -40,23 +40,21 @@ func copy() -> Materia:
 	
 	return c
 
-static func random_essence() -> Essence:
-	return Essence.values().pick_random()
+static func random_essence(except: Array[Essence]=[]) -> Essence:
+	var e = Essence.values().pick_random()
+	if (except.is_empty()):
+		return e
+	while (except.has(e)):
+		e = Materia.random_essence()
+	return e
 
-static func random_element() -> Element:
-	return Element.values().pick_random()
-
-static func next_phase(current: Phase) -> Phase:
-	match current:
-		Phase.Dormant:
-			return Phase.Awake
-		Phase.Awake:
-			return Phase.Risen
-		Phase.Risen:
-			return Phase.Dormant
-		_:
-			push_error("Unrecognized phase: %s" % current)
-			return Phase.Dormant
+static func random_element(except: Array[Element]=[]) -> Element:
+	var e = Element.values().pick_random()
+	if (except.is_empty()):
+		return e
+	while (except.has(e)):
+		e = Materia.random_element()
+	return e
 
 static func random() -> Materia:
 	var m = Materia.new()

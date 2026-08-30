@@ -13,6 +13,8 @@ var materia_next: Materia:
 	set(value):
 		materia_next = value
 
+var queue_destruction: bool
+
 var coords: Vector2i
 
 func _init(x:int,y:int,m:Materia=null):

@@ -13,5 +13,6 @@ func resolve_shift(_context: TheTurning) -> Shift.Result:
 		return _noop()
 	var before = target.materia.phase
 	target.materia_next.phase = to_phase
+	target.materia_next.age = target.materia.age + 1
 
 	return _result(before, target.materia_next.phase)

@@ -13,4 +13,7 @@ func resolve_rule(context: TheTurning) -> Array[Shift.Result]:
 	
 	print("Unfold: [%s]" % cell)
 	
+	# Threshold should change elements around it, then self destruct
+	# Celestial should do something cool too
+	
 	return []
