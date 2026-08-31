@@ -30,6 +30,37 @@ var element: Element
 var phase: Phase
 var age: int
 
+## Assumes ordered arrays of prime factors. Returns negative if a < b, 0 if they're equal
+static func numeric_compare(a: Array[int], b: Array[int]) -> int:
+	assert (!a.is_empty() || !b.is_empty())
+	if (a.size() != b.size()):
+		return a.size() - b.size()
+	else:
+		return a[0] - b[0]
+
+func get_numeric_alignment() -> Array[int]:
+	var value = int(essence) + int(element) + age
+	return compute_prime_factors(value)
+	
+static func compute_prime_factors(v: int) -> Array[int]:
+	if (v <= 1):
+		return [1]
+	var primes_to_test: Array[int] = [3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199]
+	var factors: Array[int] = []
+	for p in primes_to_test:
+		if (p > v):
+			break
+		while v % p == 0:
+			factors.push_front(p)
+			@warning_ignore("integer_division")
+			v = v/p
+	while v % 2 == 0:
+		factors.append(2)
+		@warning_ignore("integer_division")
+		v = v/2
+	assert(v == 1)
+	return factors
+
 func copy() -> Materia:
 	var c = Materia.new()
 	
@@ -65,8 +96,8 @@ static func random() -> Materia:
 	
 	return m
 
-static func get_elemental_symbol(element: Element) -> Resource:
-	match element:
+static func get_elemental_symbol(e: Element) -> Resource:
+	match e:
 		Materia.Element.Earth:
 			return preload("res://assets/img/earth.png")
 		Materia.Element.Air:
@@ -78,11 +109,11 @@ static func get_elemental_symbol(element: Element) -> Resource:
 		Materia.Element.Water:
 			return preload("res://assets/img/water.png")
 	
-	push_error("Invalid element: %s" % element)
+	push_error("Invalid element: %s" % e)
 	return null
 
-static func get_essence_color(essence: Essence) -> Color:
-	match essence:
+static func get_essence_color(e: Essence) -> Color:
+	match e:
 		Materia.Essence.Rooted:
 			return Color(0.2, 0.5, 0.2)
 		Materia.Essence.Crystalline:
@@ -99,8 +130,8 @@ static func get_essence_color(essence: Essence) -> Color:
 			return Color(1.0, 1.0, 1.0)
 	return Color.HOT_PINK
 
-static func get_phase_indicator(phase: Phase) -> String:
-	match phase:
+static func get_phase_indicator(p: Phase) -> String:
+	match p:
 		Materia.Phase.Dormant:
 			return "."
 		Materia.Phase.Awake:

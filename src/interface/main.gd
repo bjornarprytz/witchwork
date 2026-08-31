@@ -24,5 +24,8 @@ func _on_play_pressed() -> void:
 	else:
 		play_tween.stop()
 		play_tween = null
-		
+
+func _on_primes_test_value_changed(value: float) -> void:
+	var factors = Materia.compute_prime_factors(int(value))
 	
+	print(factors)

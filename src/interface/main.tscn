@@ -35,6 +35,15 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="PrimesTest" type="SpinBox" parent="CanvasLayer/Control/TopUI/Buttons" unique_id=471042391]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 5.0
+rounded = true
+alignment = 2
+prefix = "fac"
+
 [node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/TopUI/Buttons" unique_id=365798510]
 unique_name_in_owner = true
 layout_mode = 2
@@ -71,6 +80,7 @@ theme_override_constants/margin_bottom = 10
 unique_name_in_owner = true
 layout_mode = 2
 
+[connection signal="value_changed" from="CanvasLayer/Control/TopUI/Buttons/PrimesTest" to="." method="_on_primes_test_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Control/TopUI/Buttons/Refresh" to="." method="_on_refresh_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/TopUI/Buttons/NextTurn" to="." method="_on_next_turn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/TopUI/Buttons/Play" to="." method="_on_play_pressed"]
