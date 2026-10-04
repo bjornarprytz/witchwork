@@ -6,13 +6,36 @@ game on itch.io: [link](https://thewarlock.itch.io/witchwork)
 
 - Push release with `./scripts/push_release.sh`
 
-- [x] Game system
-  - [ ] Game rules
-    - [ ] Phase order
-    - [ ] Order of execution (turn, effects, shifts)
-  - [ ] Draft
-- [x] Game events (event bus)
-- [x] Game view
+### Prototype #1
+
+- Data
+  - Ritual
+  - Potion
+  - Materia
+    - Intensity
+    - Alignment
+    - Essence
+    - State
+  - Concoction
+  - Storage
+  - Shift
+  - Alteration
+
+- System
+  - Witchwork
+    - Input Materia (From foraging)
+    - Playing Rituals
+    - Use potions
+    - Concoction
+      - Potions
+      - Spells (Mock)
+  - Foraging (Mock)
+  - Grimoire (Mock)
+
+- Interface
+  - Assets
+    - Placeholder
+  - 
 
 ### Extra
 
