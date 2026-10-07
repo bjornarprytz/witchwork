@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cgrejd4v5ywd3"]
 
 [ext_resource type="Script" uid="uid://736gp2f48fi7" path="res://interface/main.gd" id="1_loxbi"]
-[ext_resource type="PackedScene" uid="uid://bl2in0vs4gljg" path="res://interface/the_turning_ui.tscn" id="2_rfu3d"]
 
 [node name="Main" type="Node2D" unique_id=199121168]
 script = ExtResource("1_loxbi")
@@ -21,50 +20,6 @@ layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 76.0
 
-[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/Control/TopUI" unique_id=559333139]
-layout_mode = 2
-
-[node name="Text" type="RichTextLabel" parent="CanvasLayer/Control/TopUI/Buttons" unique_id=1757869846]
-layout_mode = 2
-text = "  The Turning"
-fit_content = true
-autowrap_mode = 0
-vertical_alignment = 1
-
-[node name="Control" type="Control" parent="CanvasLayer/Control/TopUI/Buttons" unique_id=1686100982]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PrimesTest" type="SpinBox" parent="CanvasLayer/Control/TopUI/Buttons" unique_id=471042391]
-unique_name_in_owner = true
-layout_mode = 2
-min_value = 1.0
-value = 5.0
-rounded = true
-alignment = 2
-prefix = "fac"
-
-[node name="SpinBox" type="SpinBox" parent="CanvasLayer/Control/TopUI/Buttons" unique_id=365798510]
-unique_name_in_owner = true
-layout_mode = 2
-min_value = 1.0
-value = 5.0
-rounded = true
-alignment = 2
-prefix = "size"
-
-[node name="Refresh" type="Button" parent="CanvasLayer/Control/TopUI/Buttons" unique_id=50068711]
-layout_mode = 2
-text = "Refresh"
-
-[node name="NextTurn" type="Button" parent="CanvasLayer/Control/TopUI/Buttons" unique_id=1483144327]
-layout_mode = 2
-text = "Next Turn"
-
-[node name="Play" type="Button" parent="CanvasLayer/Control/TopUI/Buttons" unique_id=1150230076]
-layout_mode = 2
-text = "Play>>"
-
 [node name="GameView" type="MarginContainer" parent="CanvasLayer/Control" unique_id=119077404]
 layout_mode = 0
 offset_top = 76.0
@@ -76,11 +31,5 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TheTurning" parent="CanvasLayer/Control/GameView" unique_id=276444585 instance=ExtResource("2_rfu3d")]
-unique_name_in_owner = true
+[node name="TheWork" type="Control" parent="CanvasLayer/Control/GameView" unique_id=451306312]
 layout_mode = 2
-
-[connection signal="value_changed" from="CanvasLayer/Control/TopUI/Buttons/PrimesTest" to="." method="_on_primes_test_value_changed"]
-[connection signal="pressed" from="CanvasLayer/Control/TopUI/Buttons/Refresh" to="." method="_on_refresh_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/TopUI/Buttons/NextTurn" to="." method="_on_next_turn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/TopUI/Buttons/Play" to="." method="_on_play_pressed"]
