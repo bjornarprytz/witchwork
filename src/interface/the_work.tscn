@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cqqnp0jokhvb2"]
+
+[ext_resource type="Script" uid="uid://c28naiqjbswax" path="res://interface/the_work.gd" id="1_wihpb"]
+[ext_resource type="PackedScene" uid="uid://cnq0wup6p7kox" path="res://interface/bench.tscn" id="2_rakwg"]
+[ext_resource type="PackedScene" uid="uid://bhla4sxk8fnaw" path="res://interface/hand.tscn" id="3_x65ee"]
+[ext_resource type="PackedScene" uid="uid://qlbqga4slh1g" path="res://interface/storage.tscn" id="4_yfe82"]
+[ext_resource type="PackedScene" uid="uid://b8euitg407w7" path="res://interface/grimoire.tscn" id="5_j8y3y"]
+[ext_resource type="PackedScene" uid="uid://dvtt0ybwk2u30" path="res://interface/cauldron.tscn" id="6_ouqbf"]
+
+[node name="TheWork" type="Control" unique_id=1163965159]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wihpb")
+
+[node name="HBox" type="HBoxContainer" parent="." unique_id=627397962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="VBoxContainer" parent="HBox" unique_id=1972534968]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Bench" parent="HBox/Main" unique_id=1209452224 instance=ExtResource("2_rakwg")]
+layout_mode = 2
+
+[node name="Hand" parent="HBox/Main" unique_id=1938845638 instance=ExtResource("3_x65ee")]
+layout_mode = 2
+
+[node name="Side" type="VBoxContainer" parent="HBox" unique_id=1136491987]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Storage" parent="HBox/Side" unique_id=1881867256 instance=ExtResource("4_yfe82")]
+layout_mode = 2
+
+[node name="Grimoire" parent="HBox/Side" unique_id=79849695 instance=ExtResource("5_j8y3y")]
+layout_mode = 2
+
+[node name="Cauldron" parent="HBox/Side" unique_id=1644167281 instance=ExtResource("6_ouqbf")]
+layout_mode = 2

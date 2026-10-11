@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgrejd4v5ywd3"]
 
 [ext_resource type="Script" uid="uid://736gp2f48fi7" path="res://interface/main.gd" id="1_loxbi"]
+[ext_resource type="PackedScene" uid="uid://cqqnp0jokhvb2" path="res://interface/the_work.tscn" id="2_rfu3d"]
 
 [node name="Main" type="Node2D" unique_id=199121168]
 script = ExtResource("1_loxbi")
@@ -31,5 +32,5 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TheWork" type="Control" parent="CanvasLayer/Control/GameView" unique_id=451306312]
+[node name="TheWork" parent="CanvasLayer/Control/GameView" unique_id=1163965159 instance=ExtResource("2_rfu3d")]
 layout_mode = 2

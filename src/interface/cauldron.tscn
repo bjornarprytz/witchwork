@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dvtt0ybwk2u30"]
+
+[node name="Cauldron" type="Control" unique_id=1644167281]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3

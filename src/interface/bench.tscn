@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cnq0wup6p7kox"]
+
+[ext_resource type="PackedScene" uid="uid://xonybjtdqoee" path="res://interface/materia_ui.tscn" id="1_yebe8"]
+
+[node name="Bench" type="Control" unique_id=1209452224]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Materia" parent="." unique_id=617996191 instance=ExtResource("1_yebe8")]
+layout_mode = 0
+offset_left = 293.0
+offset_top = 274.0
+offset_right = 293.0
+offset_bottom = 274.0

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://xonybjtdqoee"]
+
+[ext_resource type="Texture2D" uid="uid://85p4vam34uiy" path="res://assets/img/icon.svg" id="1_rw65l"]
+[ext_resource type="Script" uid="uid://cq222m5p7o0i2" path="res://interface/materia_ui.gd" id="2_1orvo"]
+
+[node name="Materia" type="TextureRect" unique_id=1802004544]
+texture = ExtResource("1_rw65l")
+script = ExtResource("2_1orvo")

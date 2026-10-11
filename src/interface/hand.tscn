@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bhla4sxk8fnaw"]
+
+[node name="Hand" type="Control" unique_id=1938845638]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3

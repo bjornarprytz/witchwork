@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b8euitg407w7"]
+
+[node name="Grimoire" type="Control" unique_id=79849695]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
