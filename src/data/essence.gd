@@ -20,10 +20,8 @@ enum Type {
 	Secret,
 }
 
-var type: Type
-
-func is_esoteric() -> bool:
+static func is_esoteric(type: Type) -> bool:
 	return int(type) >= int(Type.Discord)
 
-func is_basic() -> bool:
-	return !is_esoteric()
+static func is_basic(type: Type) -> bool:
+	return !is_esoteric(type)

@@ -12,5 +12,3 @@ enum Type {
 	Liquid,
 	Ash
 }
-
-var type: Type

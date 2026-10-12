@@ -1,7 +1,7 @@
 class_name Materia
 extends Resource
 
-var alignment: Alignment
-var essences: Array[Essence]
-var state: MateriaState
+var alignment: Alignment.Type
+var essences: Array[Essence.Type]
+var state: MateriaState.Type
 var intensity: int

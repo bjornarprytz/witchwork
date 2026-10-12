@@ -1,13 +1,13 @@
 class_name Pentagram
 extends Resource
 
-var _order = [
+var _alignment_pie = Pie.new([
 	Alignment.Type.Spirit, 
 	Alignment.Type.Water, 
 	Alignment.Type.Fire, 
 	Alignment.Type.Earth, 
 	Alignment.Type.Air
-]
+])
 
 var intent: Materia
 var threading_left: Materia
@@ -47,7 +47,7 @@ func _find_intent(inputs: Array[Materia])  -> Materia:
 		if m.intensity < max:
 			continue
 		if m.intensity == max:
-			if m.alignment.compare(current_intent.alignment) > 0:
+			if Alignment.compare(m.alignment, current_intent.alignment) > 0:
 				current_intent = m
 		else:
 			current_intent = m

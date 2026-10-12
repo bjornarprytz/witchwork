@@ -11,10 +11,16 @@ enum Type {
 	Spirit
 }
 
-var type: Type
+static var pie: Array[Type] = [
+	Type.Spirit,
+	Type.Water,
+	Type.Fire,
+	Type.Earth,
+	Type.Air
+]
 
-func equals(other: Alignment):
-	return compare(other) == 0
+static func equals(a: Type, b: Type):
+	return compare(a, b) == 0
 
-func compare(other: Alignment) -> int:
-	return int(type) - int(other.type)
+static func compare(a: Type, b: Type) -> int:
+	return int(a) - int(b)

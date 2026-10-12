@@ -11,7 +11,7 @@ func match_materia(materia: Materia) -> bool:
 			return false
 		var matching_essence = false
 		for e in materia.essences:
-			if essences.has(e.type):
+			if essences.has(e):
 				matching_essence = true
 				break
 		if (!matching_essence):
