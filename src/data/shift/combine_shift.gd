@@ -28,6 +28,7 @@ func resolve(input: Array[Materia]) -> Array[Materia]:
 			c.alignment = pie.get_leftguy(a.alignment, b.alignment)
 		else:
 			c.alignment = pie.get_rightguy(a.alignment, b.alignment)
+	
 	return [c]
 	
 	
