@@ -22,7 +22,7 @@ func match_materia(materia: Materia) -> bool:
 			return false
 	
 	if (alignments.size() > 0):
-		if (!alignments.has(materia.alignment.type)):
+		if (!alignments.has(materia.alignment)):
 			return false
 	
 	return true

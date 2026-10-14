@@ -25,8 +25,10 @@ func _determine_outcome() -> Potion:
 		inputs[i.alignment] = i
 	
 	var pentagram = Pentagram.new(inputs)
-	var intent = pentagram.get_charge()
+	var intent = pentagram.get_intent()
 	var charge = pentagram.get_charge()
+	
+	var intensity_by_essence := Essence.group_intensities(ingredients)
 	
 	## TODO: Determine the potion function ([POTENTIAL release/bind] or [Alteration])
 	

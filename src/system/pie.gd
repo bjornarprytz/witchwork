@@ -1,5 +1,6 @@
 class_name Pie
 extends Resource
+@warning_ignore_start("integer_division")
 
 ## Utility about items relations, e.g. color pie. Only for odd-numbered pies
 
@@ -21,10 +22,11 @@ func get_opposites(item: Variant) -> Array:
 func get_distant_pair(item: Variant, dist: int) -> Array:
 	assert(dist > 0 and dist <= (_items.size() / 2))
 	
-	return [
-		get_other(item, -dist),
-		get_other(item, dist)
-	]
+	var a = get_other(item, -dist)
+	var b = get_other(item, dist)
+	assert (a != b)
+	
+	return [a,b]
 
 func get_next(item: Variant) -> Variant:
 	return get_other(item, 1)
