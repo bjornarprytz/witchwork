@@ -15,6 +15,10 @@ func resolve() -> Array[Materia]:
 	for shift in ritual.outcomes:
 		output = shift.resolve(output)
 	
+	for p in potions:
+		for r in p.potential_release:
+			r.resolve()
+	
 	return output
 
 func validate_materia(materia: Materia) -> bool:

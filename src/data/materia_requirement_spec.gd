@@ -7,13 +7,9 @@ var alignments: Array[Alignment.Type]
 
 func match_materia(materia: Materia) -> bool:
 	if (essences.size() > 0):
-		if (materia.essences.size() == 0):
-			return false
 		var matching_essence = false
-		for e in materia.essences:
-			if essences.has(e):
-				matching_essence = true
-				break
+		if essences.has(materia.essence):
+			matching_essence = true
 		if (!matching_essence):
 			return false
 	

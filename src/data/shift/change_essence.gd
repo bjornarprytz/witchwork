@@ -1,4 +1,4 @@
-class_name AddEssenceShift
+class_name ChangeEssenceShift
 extends Shift
 
 var target_essence: Essence.Type
@@ -6,7 +6,6 @@ var target_essence: Essence.Type
 
 func resolve(input: Array[Materia]) -> Array[Materia]:
 	for i in input:
-		if !i.essences.has(target_essence):
-			i.essences.push_back(target_essence)
+		i.essence = target_essence
 	
 	return input

@@ -49,10 +49,10 @@ static func group_intensities(inputs: Array[Materia]) -> Dictionary[Type, int]:
 	var grouping: Dictionary[Essence.Type, int] = {}
 	
 	for m in inputs:
-		for e in m.essences:
-			if grouping.has(e):
-				grouping[e] += m.intensity
-			else:
-				grouping[e] = m.intensity
+		var e = m.essence
+		if grouping.has(e):
+			grouping[e] += m.intensity
+		else:
+			grouping[e] = m.intensity
 	
 	return grouping

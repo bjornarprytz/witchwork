@@ -10,6 +10,43 @@ func _init(items: Array) -> void:
 	assert(items.size() > 2 and items.size() % 2 == 1)
 	_items = items
 
+## Examine the items between a and b (inner and outer). Only one item is equidistant
+## from a and b, and it will be in the middle of the group with an odd number of items.
+func get_equidistant(a: Variant, b: Variant) -> Variant:
+	if (a == b):
+		return a
+	
+	## a [] b
+	var mid_index: int = -1
+	var inner_group = _get_intermediate_items(a, b)
+
+	if (inner_group.size() % 2 == 1):
+		mid_index = inner_group.size() / 2
+		return inner_group[mid_index]
+	
+	## ] a b [
+	var outer_group = _get_intermediate_items(b, a)
+	
+	assert(outer_group.size() % 2 == 1, "One of the groups must be odd-numbered")
+
+	mid_index = outer_group.size() / 2
+	return outer_group[mid_index]
+
+func _get_intermediate_items(from: Variant, to: Variant) -> Array[Variant]:
+	assert (_items.has(from) and _items.has(to))
+	
+	var group = []
+	
+	var next: Variant = get_next(from)
+	
+	while next != to:
+		assert (group.size() < _items.size())
+		
+		group.push_back(next)
+		next = get_next(next)
+	
+	return group
+
 func get_neighbours(item: Variant) -> Array:
 	return get_distant_pair(item, 1)
 
